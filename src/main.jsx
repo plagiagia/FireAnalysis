@@ -509,10 +509,16 @@ function buildCountryStats(rows, fromYear, toYear) {
 
 function buildSpatialBins(rows) {
   if (!rows.length) return []
-  const minLatRaw = Math.min(...rows.map((row) => row.latitude))
-  const maxLatRaw = Math.max(...rows.map((row) => row.latitude))
-  const minLonRaw = Math.min(...rows.map((row) => row.longitude))
-  const maxLonRaw = Math.max(...rows.map((row) => row.longitude))
+  const bounds = rows.reduce((result, row) => ({
+    minLat: Math.min(result.minLat, row.latitude),
+    maxLat: Math.max(result.maxLat, row.latitude),
+    minLon: Math.min(result.minLon, row.longitude),
+    maxLon: Math.max(result.maxLon, row.longitude),
+  }), { minLat: Infinity, maxLat: -Infinity, minLon: Infinity, maxLon: -Infinity })
+  const minLatRaw = bounds.minLat
+  const maxLatRaw = bounds.maxLat
+  const minLonRaw = bounds.minLon
+  const maxLonRaw = bounds.maxLon
   const latPad = Math.max((maxLatRaw - minLatRaw) * 0.04, 0.15)
   const lonPad = Math.max((maxLonRaw - minLonRaw) * 0.04, 0.15)
   const minLat = minLatRaw - latPad
