@@ -6,6 +6,8 @@ Analysis of NASA satellite-detected active-fire hotspots in Greece, Israel, Ital
 
 This repository includes a GitHub Pages-ready React dashboard for exploring the archive. It combines time-series analysis, a spatial hotspot field, country comparisons, detection anatomy, and an analyst readout that updates with the selected filters.
 
+The Vite production build copies the CSV archive into `dist/Data/`, so the dashboard works on static hosts such as Vercel and GitHub Pages as well as locally.
+
 ### Run locally
 
 ```bash
