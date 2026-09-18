@@ -23,6 +23,8 @@ npm run build
 
 The workflow in [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) builds and deploys the dashboard whenever `main` is updated. In the repository settings, set **Pages → Build and deployment → Source** to **GitHub Actions**.
 
+If a deployment ends with `Failed to create deployment (status: 404)`, open [Repository Settings → Pages](https://github.com/plagiagia/FireAnalysis/settings/pages) and select **GitHub Actions** as the source. The workflow cannot create the Pages deployment until Pages has been enabled for the repository.
+
 ## Dataset
 
 The project uses the [2000–2021 Tunisia–Israel–Greece–Italy NASA dataset on Kaggle](https://www.kaggle.com/datasets/brsdincer/2000-2021-tunisiaisraelgreeceitaly-nasa).
